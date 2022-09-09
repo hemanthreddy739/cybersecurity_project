@@ -1,0 +1,370 @@
+securityheaders.io  --> it is an website used to check the domain security status.
+by using the ip address of the domain zone tranfer attack can be done.
+by using the mailrecord details and can exploit an smtp open relay vulnerability.
+the harvester:- it is an tool it is used to gather the official mail ids information that is disclosed in the google.
+knockpy:- it is a python based tool it is used to sub-domain enumeration .
+if the application is so secure then they not disclose the subdomains,server details and their version .
+
+==> nslookup,theHarvester,knockpy are the tools used to gathersome information regarding the target.
+==> online tools:-     that are used for passive information gathering.
+=====================
+whois.sc
+www.Technical.info.net
+www.Netcraft.com      --> better one(which reveals much sensitive information)
+www.whois.sc
+www.dnsstuff.com
+www.centralops.net
+www.robtex.com
+www.arin.net
+
+
+===> google hacking :- it is nothing but using dome google search operators getting the information related to the target.
+examples:-
+---------
+site:
+link:
+info:
+related:
+filetype:
+intitle:
+inurl:
+allintitle:
+allinurl:
+
+** the error handling should be done in a secured way not in a way of leaking sensitive information.
+
+
+==> wappalyzer --> is an extension it gives some information related to the target.
+
+
+==> active information gathering tool --> derbuster tool [dirb]
+
+==> all our website code placed on --> web root directory in the server.
+
+** the folders in the web root directory without the index page are an chance of vulnerability.
+
+### SCANNING:-     active information gathering.
+===============
+
+--> network scanning :- to detect hosts 
+
+--> port scanning:-status of port
+   * for running any service an virtual memory is alloted i.e port number.
+   ==> 0-65535 ports are there.
+   --> inthat all available ports ==> starting 1024 ports are reserved ports.
+   
+   
+   status of ports:-
+   =================
+   open:-    service is running.
+   close:-  port is closed
+   filtered:-protected by fire wall.
+   unfiltered:-it is accessible but unable to determine it is open or closed.
+   tcp wraped:-3 way hand-shake is completed b/w parties.and u r not an authorised one to interact. 
+   
+   TOOLS:-
+   =========
+   TO get open port information :- NMAP 
+   
+   --> nmap scanning is done to bypass the firewall and to know the status of the port i.e open/closed.
+   
+   
+   ## syntax :-
+   ===========
+   nmap -s(S/A/F/X/T/U)  -p port_number(s)/range -sV -O targetip
+   
+   
+   --> if our msg delivered successfully then that port is open.
+   
+   
+   options:-
+   	-sX --> xmas scanning.
+   	-sV = to get version  --> for each and every port we have different version details.
+   	-O = operating system details
+   	-sU = udp scanning.
+
+   	## the nmap fast scanning is done only on the standard 1023 ports.
+   		--> in this fast scanning there is not to give the specific port number.
+   		syntax:-
+   		--------
+   			nmap -F -sV -O target_ip_address
+   	
+   	## nmap agressive scanning:-
+            ------------------------
+            no need to give any options it internally gave.
+            it scnas all ports and in depth scan also.
+            --> nmap -A target_ip
+   		--> it gives best result and also it takes less time
+   		
+   	## tcp scanning using nmap:-
+   	-----------------------------
+   	--> makes a 3 way hand shakes with the ports and gets information.
+   		## synatax:-
+   		------------
+   			nmap -s(S/A/F/X/T)  -p port_number(s)/range -sV -O targetip
+   	--> it gives exactly the target ports are open or closed.
+   	
+   	## nmap udp scanning:-
+   	----------------------
+   	--> in this continously sending the multiple udp packets.
+   	--> it is recommended to perform only at the last if there is nothing better chance,since it send lot of packets in background.
+   	
+   	
+   	##### ZEN MAP :- IT IS A GUI VERSION OF NMAP ######
+   	-----------------------------------------------------
+   	
+   	
+   	 
+  ### for practising purpose --> offensive security developed a server i.e metasploitable linux
+   
+   where:-
+   ------- 
+   S = sync packer(hi message)
+   A = acknowledgement packet
+   F = final packet (bye message)
+   X  = Xmas scanning  ( send at a time 3 types of packetes --> urge = urgent,push = don't do any judgement
+   				just accept , final packet.)
+   T = making an 3 way handshaking with the default 1000 ports(tcp scanning)
+   
+   
+   ### practising with the metasploitable server:-
+   ---------------------------------------------------
+   --> ctrl+g --> to go inside and ctrl+alt to come out.
+   
+   
+   
+   
+   ====> OWASP ZAP:-   open web application security project.
+   ------------------
+   --> it is a tool used to find the owasp top 10 vulnerabilities.
+   --> on performing the automated scan on giving an url first it performs the passive scaning and then it performs the active scanning and also it gives the recomended fixex to fix the ariesd issue.
+   --> then on clicking the generate report option it generates the detailed report which includes the vulnerabilities and the attacks that may possible on those vulnerabilities and  the recomended solutions to fix and also it gives the priority level of the issue also.
+   --> it is a vulnerability scanner.
+   	==============================
+   	
+   
+   
+   ====> BURP SUITE:-
+   -------------------
+   --> completely written in java ,ues for web application penetration testing,it is a proxy for browser.
+   --> sheduled and repeted scanning is possible in enterprised edition.
+   --> portswigger.net --> is the official website.
+   
+   ==> setup proxy using the firefox extension --> foxy proxy .
+   --> to capture request u have to turn on intercept in burp and proxy in browser.
+   
+   
+   ==============proxy tab in burbsuite =====================
+   	--> under intruder position :-
+   ------------------------------------
+   			
+   			
+ 	--> attack type :_
+ 	-------------------
+ 	1) sniper/battery ram  :- uses 1 set of payload(1 file).
+ 		--> sniper :-
+ 			u
+ 			p
+ 			u
+ 			p
+ 			:
+ 			:
+ 		--> Battery Ram:-
+ 			value  ==> username==password. 
+   	2) Pitch fork and cluster bomb:-
+   	---------------------------------
+   	--> it takes 2 set of pay load i.e (2 files let say 1 is username, 2nd is password)
+   	-->pitch fork :-
+   	---------------
+   		--> it takes one username from username and one passsword from password and perform attack 
+   		and it goes on ....
+   	--> cluster bomb:-
+   	-------------------
+   		--> it takes one username from username  and perform attack with all the passwords in password file and it goes on ....
+   		
+   ==============repeater tab in burb suite ===================
+   --> when u want to repeat the request of the modified value .
+  
+  
+  ===> SEQUENCER is used to find the relation b/w the session ids the web application generated.
+  	--> to get to know how randomness it had.
+  	
+  
+  ========> DECODER IN BURB:-
+  ============================
+  		--> it is used in both encoding and decoding technique
+  		
+  ===> COMPARER IN BURB:-
+  ========================
+  --> words level/char level and byte level.
+  --> it is used to compare the hash values ,session ids etc.
+  --> byte level comparision is more powerful than character level.
+  
+  ==> EXTENDER IN BURB:-
+  =======================
+  --> it is used to add extensions to the existing scanner.
+  
+  
+  ### the burpsuite tool will generate false +ves we should have to remove them manually.
+ 
+ 
+ ===> engagement_tool_csrf_poc:-
+ =================================
+ --> capture the request and send it to the repeater and then rightclick and then send to csrf and then change it to u r required value.
+ --> csrf is used to forgery.
+ 
+ 
+ 
+ ===> NESUS TOOL :- for performing active sscanning.
+ --> runs on 8834.
+ -->the host discovery scan checks for the only bascic scans i.e only part scanning.
+ --> the advanced scanning is nothing nut complete vulnerability scanning.
+ 
+ ===================VPN========================
+ 
+ --> virtual private network.
+ 
+ 
+ =========MALWARE==================
+ -->enter through e-mail attachments,phishing,pendrives,harddisks,
+ 
+ 
+ #####IDS AND IPS TOOLS:-
+ =========================
+ 	1) alien vault ossim
+ 	2)trend micro tipping point
+ 	3)security onion
+ 	
+
+
+ #########  TRAFFIC SNIFFING AND ANALYSIS   ##############
+ ======================================================
+  	TOOLS:-
+  	===========
+  	1)wireshark:- live capturing,offline analysis , and it is a cross flatform,GUI TOOL,
+  	able to modify the captured data.
+  	--> it is a completely network layer tool.
+  	
+  	2)tcp dump
+   		
+
+
+=====> asymmetric --> public key and private keys
+====================================================
+	--> if the encryption is done by the sender with the receivers publically available key and then send to the receiver then the receiver should decrypt the message with the priate key he had.(in this case the receiver doesn't able to identify or validate the sender.
+	--> if the encryption is done with the senders private key and then send the msg to the receiver then the receiver should decrypt the msg with the senders public key which is publically available.
+	(in this case there is a chance for attacker decrypt the message in middle and change and send to the receiver   it leads to the lose of integrity and confidentiality.){but thre is validation}
+   
+   
+   ====>HASHING AND DIGITAL SIGNATURE:-
+   =====================================
+   --> hashing --> to achieve integrity.
+   
+  
+  ======>SESSION HIJAKING:-
+  =============================
+  --> ffirst u have to add cookies to our browser(since the cookie contiains the JSESSION ID)
+  --> go to "edit this cookie for chrome".
+  --> cookie-editor --> for firefox --> it is a extension.
+  should not have-->session replay vulnerability.
+  
+  
+  ########SQL INJECTION ==================
+  --> TAKE A URL that should be in such a way that it contains an = operator after that operator if we change some thing if there is a change in that webpage --> take that type of url/.
+   
+    --> in the back-end the coder coded that query may be in "" or '' or () --> so we have to try in all possibilities.
+    
+--> vulnerability scanning:-vulnerabilities of target.
+
+
+###########################  PROJECT 1 ##############################
+
+-->CSRF :- cross site requesting forgery.
+--> IDOR :-insecure direct object reference  --> 2 types:-1)body manipulation 2)url tampering.
+		--> under this idor we have to check the directory traversal ,file inclusion,file upload vulnerabilities.
+		
+
+#######################  PROJECT 2 ###################################
+
+-->ENUMARATING_USER:-
+
+--> IN THE '/usr/share/nmap/scripts'   --> in this folder there is lot of automated scripts when we run them 
+    we can get some information about the target system.
+    
+    ==>   .nse <==> nmap scripting engine.
+    
+  --> first get into the msfconsole
+  ---> then get into the auxilary module like
+  		$--> use auxilary/scanner/smtp/smtp_
+  					---> it shows the matching modules and then use the specific option 
+  					and go inside into it.
+  					--> the use $ show options command --> then use them for u r purpose
+  					
+  		### enum --> enumerating user name.
+  		
+
+  =======> VERSION EXPLOITATION:-
+  ================================
+  --> version exploitation is so powerful if u found the version and if it is not the updated version 
+  	then if some one exploited already and it can be found in www.rapid7.com then use the instructions
+  	and exploit them using the metasploitable frame work .
+  --> the after exploited successfully the whole server is come into u r control with just exploiting the 
+      version of one thing like (ftp, smtp,etc)
+      
+  		
+  		
+  		
+  		
+  		
+  		
+  		=============================================================================
+  		### vulnerable applications to learn and attack.
+  		
+  		-->owasp broken web application
+  		--> bwapp
+  		-->testfire.net
+  		
+  		--> cve details. 
+  		
+  		--> www.rapid7.com  --> gives the process of exploitation of an old version .
+  		
+  		
+  		---> the addon applications( the 3 rd party applications i.e downloaded ) are installed in 
+  			/opt folder.
+  		
+  		
+  		
+  		
+  		
+  		
+  		
+  		
+  		
+  		
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
