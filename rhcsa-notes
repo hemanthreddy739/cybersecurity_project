@@ -1,0 +1,230 @@
+
+ctrl+c ==> used to terminate the program completely
+ctrl+z ==> it seems to stop the program but it just pauses the program and puts it in the background.
+
+==> every program is assigned with an id in linux.
+
+==> to see all the background programs 
+     # jobs
+
+==> to bring a program from background to foreground.
+==> # fg program_id.
+
+===> some special thing.
+# program_name &
+ --> putting an '&' at the end of the command can makes,the program went to background+running,and also gives command_prompt enabling user to execute another commands.
+--> but on executing command without any (&) at the end ,and then on pressing ctrl+z then the program pauses and then moved to background.
+
+==> # echo "`date`"  --> prints the date command.
+==> echo -n "hello"  --> removes new line.
+==> echo -e "hello\nbye" --> then only escape character works ==> hello
+								  bye
+
+==>
+[root@localhost Desktop]# echo -e "hello\b babu"
+hell babu
+[root@localhost Desktop]# echo -e "hello\b"
+hello
+[root@localhost Desktop]# echo -ne "hello\b"
+hell[root@localhost Desktop]# 
+
+
+
+---------------------
+
+==> to find all the running process we use
+    $ ps -aux | grep specific_process_name.
+
+==> every process is associated with an process id
+    --> find the process id which you want to terminate than
+         $ kill process_id
+
+===> to open a terminal from a terminal using a command 
+     $ gnome-terminal
+
+------------------------------------
+
+--> to verify a user is exists or not
+       $ cat /etc/passwd
+       $ id username
+--> to add new user $ useradd username
+--> to get more details of user 
+      the below files contains much information about users
+       --> cat /etc/passwd
+       --> cat /etc/shadow  ==> gives whether the user had a password or not -->if had a password it is hashed.
+       --> cat /etc/gshadow.
+
+==> to change password for a user 
+    $ passwd user_name
+
+
+
+
+=> on importing os module of python you can run the commands of the linux,windows through the system()
+
+       import os
+       os.system("date")
+-------------------------------------------------------------------
+ALL ABOUT SHELL:-
+================
+--> without the process we can't do any thing in the OS.
+--> somebody is there to read the command u typed in the terminal and find where that 
+     command located in the filesystem and executes(run) for the user.
+--> that somebody is a program <==>SHELL
+--> the command prompt is also known as shell prompt
+	--> behind the scene of execution of date command.
+		$which date
+                  $/usr/bin/date
+--> SHELL IS  a concept name and there are many flavors of shell are available 
+             -->csh,zsh,pksh,fish, popular --> bash shell.
+
+--> for getting the shell you have to login
+
+==> ways to interact with os 
+    -gui,cli(that to shell is involved in interacting with os),webui,mobile app.
+
+==> gui EXAMPLES :-gnome,kde
+
+--> to set the foreground colour of the shell 
+      $ tput setaf 0to7   --> setaf = set attribute for foreground
+    forbackground 
+      $ tput setab 0to7  
+        to see its effect on whole screen 
+          $ clear
+
+
+======================================
+20-05-2022
+===========
+
+--> repl --> read evaluate print loop.
+--> the sites like replit,aws,etc user docker technology to install,boot,and launch an 
+    new operating system innjust 5-10 sec.
+    --> also by using of the docker technology the consumption of memory is also very minimum.
+
+
+--> to print the escape characters also 
+       print(r"hello\nlearners")  -->o/p --> hello\nlearners.
+---> the technical term which means replacing of the escape characters with their duty is called
+      INTERPOLATION.
+
+
+
+==> ANY USER IN ANY OS ONLY USE THE 2 THINGS --> WITH FILE AND FOLDER.
+
+
+--> RPM:- redhat package management
+
+--> to query that a specific s/w is installed or not 
+ 
+$ rpm -q firefox
+$ rpm -q -a    ==> gives the list of all commands that are installed in the computer.
+
+==> software is a collection of modules ,collection af several software gives an OS.
+
+==> to find from which s/w the command is came :)
+
+lets say date command
+
+$ which date ==> it gives some path where the command date is located
+$ rpm -q -f that_path  ==> gives the s/w file name.
+
+
+--> software = package = setupfile = rpm
+--> mostly the s/w extensions for the windows ==> .exe, .msi   | and for redhat_linux  ==>.rpm
+
+==> installing any s/w is nothing but copying the files into our hard-drive 
+==> uninstalling is nothing but removing all the files and folders from hdd which was created by  the s/w.
+
+===> command to uninstall s/w
+$ rpm -e s/w_name     --> 'e'  is erase.
+
+ 
+==> you can install the any missed or uninstalled basic s/w from the redhatlinux.
+--> it can be reinstalled in 3 ways 
+    1)  go into the internet and download the s/w and install.
+    2)  using yum command through terminal   
+    3)  by attaching the iso-file(red hat feels it is an dvd) then
+         on selecting file_folder
+                          >iso-file(dvd)
+                             >appsream or >baseos
+-->then right click on the white-space and select open with terminal then u straight away changed into that path .
+
+$ rpm -i s/w_name    --> 'i' --> for installing , 'v' --> verbose<==> gives background going details, 'h' --> hash <==> it shows the progress in percentage.
+
+----------------------------------------------------------
+
+==> if you can read the ram you can do hacking:)
+
+==> when you login into any account(like fb) after checking your login credentials the fb will
+    send you a "token"<==>cookie it is very important and it is stored in browser.
+
+ 
+==> to get where the command is located i.e in which file 
+   $ which command_name
+
+==> what ever you do in the firefox it will be stored in the below folder its location
+        ==> $HOME/.mozilla
+              >then go into firefox
+                    >then you will find a folder named with some name and with an (.default) extension, move into it.
+                        > then you will find "cookies.sqlite" --> there you find your token given 
+                                        by FB.
+
+------------------------------------------------------------------------------
+
+### if there is a problem during the creation of the user it is due to created of the 
+      file calles "/etc/passwd.lock" it should be removed.
+
+	$ rm /etc/passwd.lock
+
+## $ rpm -q -i s/w_name    ==> gives some more information about the s/w.
+
+
+#### linux is opensource ,but not all s/w source code is available in our linux os,because it is a burden .
+ 	## but the source is availabe at some website to find the website the procedure.
+
+              FOR EXAMPLE TO FIND THE SOURCE CODE OF THE DATE:-
+		$ which date    ---> gives the file location which had date command.
+                $ rpm -q -f (o/p_given by which date)    --> gives through which s/w the is came into 
+			the os.
+		--> then u have to find more information of the s/w
+		$ rpm -q -i (s/w_name_that _u finded_out)
+                            --> in the info u find "source rpm"   ==> that place had the source code of that s/w.
+	
+
+
+==> when ever u installed any s/w in linux lots of file are created in miltiple locations.
+
+
+==> $ eog file_name.jpg/png  --> eog command is used to open the image files.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
